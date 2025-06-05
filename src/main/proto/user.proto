@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option java_package = "auth";
+option java_multiple_files = true;
+
+service AuthService {
+  rpc Register(UserRequest) returns (UserResponse);
+}
+
+service UserDatabaseService {
+  rpc SaveUser(UserRequest) returns (UserResponse);
+  rpc GetUser(UserId) returns (UserResponse);
+}
+
+message UserRequest {
+  string username = 1;
+  string email = 2;
+}
+
+message UserResponse {
+  string status = 1;
+}
+
+message UserId {
+  string username = 1;
+}
